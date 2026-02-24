@@ -98,3 +98,36 @@ st.info(f"""
 2. **İlgi -> Güven:** İlgi gösterenlerin %{(prospects/engaged)*100:.1f}'i röntgenini paylaşıyor. Bu, güven bariyerinin aşıldığı kritik adımdır.
 3. **Güven -> Satış:** Röntgen gönderenlerin %{(won/prospects)*100:.1f}'i kliniğe geliyor.
 """)
+
+
+# --- EKONOMİK VERİMLİLİK (ROAS) ANALİZİ ---
+st.divider()
+st.header("💰 Ekonomik Verimlilik & Yatırım Getirisi (ROAS)")
+
+# Sabit Değerler (Mülakatta "Sektör Standartlarını kullandım" diyebilirsin)
+AVG_TREATMENT_VALUE = 3500  # GBP (UK için ortalama bir tedavi bedeli)
+
+# 1. Gelir (Revenue) ve Maliyet (Spend) Türetme
+df['calculated_revenue'] = df['status'].apply(lambda x: AVG_TREATMENT_VALUE if x == 'Won' else 0)
+total_revenue = df['calculated_revenue'].sum()
+total_spend = df['spend_per_lead'].sum()
+
+# 2. ROAS Hesaplama
+roas = total_revenue / total_spend if total_spend > 0 else 0
+
+# 3. Görsel Kartlar
+r_col1, r_col2, r_col3 = st.columns(3)
+
+with r_col1:
+    st.metric("Tahmini Toplam Gelir", f"£{total_revenue:,.0f}")
+with r_col2:
+    st.metric("Toplam Reklam Harcaması", f"£{total_spend:,.0f}")
+with r_col3:
+    st.metric("ROAS (Yatırım Getirisi)", f"{roas:.2f}x",
+              delta=f"{roas - 4.0:.2f} vs Hedef (4x)",
+              delta_color="normal")
+
+st.info(f"""
+**Stratejik Not:** Her 'Won' statüsündeki hasta için UK pazarı ortalama tedavi bedeli olarak **£{AVG_TREATMENT_VALUE}** referans alınmıştır. 
+Şu anki ROAS değerimiz **{roas:.2f}x**, yani harcanan her 1 birim reklam bütçesi karşılığında {roas:.2f} birim gelir elde edilmektedir.
+""")
