@@ -29,7 +29,10 @@ except:
 # Header Alanı
 st.title("🦷 Dental Clinic: Performans & Veri Bilimi Dashboard")
 st.subheader("Pazarlama ve Satış Süreçlerinin Veri Odaklı Optimizasyonu")
-
+st.info("""
+💡 **Bilgilendirme:** Bu dashboard, veri bilimi yetkinliklerini ve stratejik analiz süreçlerini sergilemek amacıyla hazırlanmış bir **demo** çalışmasıdır. 
+Kullanılan veriler tamamen **sentetik (yapay)** olup, gerçek hasta veya klinik verilerini yansıtmamaktadır.
+""")
 st.divider()
 
 # --- ÜST SEVİYE METRİKLER (KPI CARDS) ---
