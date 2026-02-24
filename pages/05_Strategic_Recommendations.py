@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 st.divider()
 st.header("📊 Sektörel Benchmark ve Mevcut Durum Analizi")
 st.markdown("""
-Aşağıdaki grafik, **Dental Clinic** performans verilerinin Birleşik Krallık (UK) Sağlık Turizmi pazarındaki genel benchmark değerleri ile kıyaslamasını gösterir.
+Aşağıdaki grafik, **Dental Clinic** operasyonel verilerinin, ana hedef pazarımız olan **Birleşik Krallık (UK) Sağlık Turizmi** sektörel ortalamalarıyla (Benchmark) olan korelasyonunu ve performans sapmalarını gösterir.
 """)
 
 
