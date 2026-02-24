@@ -20,7 +20,7 @@ col1, col2 = st.columns([1, 2])
 with col1:
     st.subheader("Hedefler")
     target_conv_a = st.number_input("Baz Dönüşüm Oranı (A) %", value=5.0, step=0.5) / 100
-    expected_uplift = st.slider("Hedeflenen Artış (Uplift) %", 5, 100, 20) / 100
+    expected_uplift = st.slider("Hedeflenen Artış (Uplift) %", 5, 100, 30) / 100
 
     # Hedef B oranını hesapla
     target_conv_b = target_conv_a * (1 + expected_uplift)
@@ -74,3 +74,26 @@ with cp2:
             f"Dikkat: Test gücü hedef seviye olan %80'in altında (%{observed_power * 100:.1f}). Sonuçlar yanıltıcı olabilir.")
     else:
         st.success(f"Tebrikler: Test gücü %{observed_power * 100:.1f} ile güvenli seviyede.")
+
+
+
+st.divider()
+st.header("🚀 Gelecek Hafta İçin Planlanan A/B Test Önerileri")
+st.markdown("Veri setindeki darboğazlar (leakage) ve kullanıcı davranışlarındaki pain point'ler temel alınarak kurgulanmıştır.")
+
+col_prop1, col_prop2 = st.columns(2)
+
+with col_prop1:
+    st.subheader("Test 1: Güven Bariyerini Aşmak")
+    st.warning("**Pain Point:** Lead'lerin %60'ı 'İlgi' aşamasında takılıyor, Röntgen gönderme (Güven) aşamasına geçmiyor.")
+    st.success("**Hipotez:** Form sayfasına 'Kişisel Verilerin Korunması ve Medikal Gizlilik' sertifikalarının eklenmesi, röntgen gönderim oranını %15 artıracaktır.")
+    st.info("**Metrik:** X-Ray Conversion Rate")
+
+with col_prop2:
+    st.subheader("Test 2: Yanıt Hızı ve Churn")
+    st.warning("**Pain Point:** Mesajlara 2 saatten geç dönülen lead'lerde 'Churn' olasılığı %40 daha yüksek.")
+    st.success("**Hipotez:** İlk iletişimde otomatik bir 'Tedavi Rehberi PDF'i' gönderilmesi, kullanıcının bekleme süresindeki vazgeçme oranını düşürecektir.")
+    st.info("**Metrik:** Lead-to-SQL(Sales Qualified Lead) Conversion Rate")
+
+st.write("")
+st.caption("Not: Bu testler, istatistiksel anlamlılığa ulaşmak için A Priori hesaplamasında belirlenen örneklem sayılarına ulaşıldığında finalize edilecektir.")
