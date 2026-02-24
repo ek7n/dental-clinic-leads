@@ -27,7 +27,6 @@ with tab1:
 
 with tab2:
     st.subheader("CRM Satış Boru Hattı")
-    st.info("💡 Not: Veri temizliği aşamasında 'Won' durumundaki hatalı 'Loss Reason' kayıtları burada ayıklanır.")
     st.dataframe(sales_df.head(10), use_container_width=True)
 
 with tab3:
